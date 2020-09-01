@@ -1,0 +1,35 @@
+version : '3'
+
+services:
+    lb:
+        image: haproxy
+        ports:
+            - "8082:8080"
+        volumes:
+            - ./haproxy:/usr/local/etc/haproxy
+    ws1:
+        image: wsapp
+        environment:
+            - APPID=1111
+        volumes:
+            - ./app:/home/node/app
+    ws2:
+        image: wsapp
+        environment:
+            - APPID=2222
+        volumes:
+            - ./app:/home/node/app
+    ws3:
+        image: wsapp
+        environment:
+            - APPID=3333
+        volumes:
+            - ./app:/home/node/app
+    ws4:
+        image: wsapp
+        environment:
+            - APPID=4444
+        volumes:
+            - ./app:/home/node/app
+    rds:
+        image: redis
